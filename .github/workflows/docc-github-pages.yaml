@@ -28,8 +28,8 @@ jobs:
             generate-documentation --target EventProducer \
             --disable-indexing \
             --transform-for-static-hosting \
-            --hosting-base-path swift-event-sourcing-cqrs/EventProducer \
-            --output-path ./docs/EventProducer
+            --hosting-base-path swift-event-sourcing-cqrs \
+            --output-path ./docs
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
