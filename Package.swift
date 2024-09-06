@@ -31,6 +31,18 @@ let package = Package(
             ],
             plugins: swiftLintPlugins
         ),
+        .target(
+            name: "EventConsumer",
+            plugins: swiftLintPlugins
+        ),
+        .testTarget(
+            name: "EventConsumerTests",
+            dependencies: [
+                "EventConsumer",
+                .product(name: "Testing", package: "swift-testing"),
+            ],
+            plugins: swiftLintPlugins
+        ),
     ]
 )
 var swiftLintPlugins: [Target.PluginUsage] {

@@ -22,7 +22,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: swift-actions/setup-swift@v2
-      - name: Build DocC
+
+      - name: Build DocC for EventProducer
         run: |
           swift package --allow-writing-to-directory ./docs/EventProducer \
             generate-documentation --target EventProducer \
@@ -30,6 +31,15 @@ jobs:
             --transform-for-static-hosting \
             --hosting-base-path swift-event-sourcing-cqrs/EventProducer \
             --output-path ./docs/EventProducer
+          
+      - name: Build DocC for EventConsumer
+        run: |
+          swift package --allow-writing-to-directory ./docs/EventConsumer \
+            generate-documentation --target EventConsumer \
+            --disable-indexing \
+            --transform-for-static-hosting \
+            --hosting-base-path swift-event-sourcing-cqrs/EventConsumer \
+            --output-path ./docs/EventConsumer
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
