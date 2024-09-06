@@ -1,0 +1,38 @@
+name: DocC GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'Sources/**/*.swift'
+      - ".github/workflows/docc-github-pages.yaml"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: swift-actions/setup-swift@v2
+      - name: Build DocC
+        run: |
+          swift package --allow-writing-to-directory ./docs \
+            generate-documentation --target EventProducer \
+            --disable-indexing \
+            --transform-for-static-hosting \
+            --hosting-base-path swift-event-sourcing-cqrs/EventProducer \
+            --output-path ./docs/EventProducer
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
+
+      - uses: actions/deploy-pages@v4
