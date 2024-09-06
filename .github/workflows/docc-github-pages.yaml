@@ -24,12 +24,12 @@ jobs:
       - uses: swift-actions/setup-swift@v2
       - name: Build DocC
         run: |
-          swift package --allow-writing-to-directory ./docs \
+          swift package --allow-writing-to-directory ./docs/EventProducer \
             generate-documentation --target EventProducer \
             --disable-indexing \
             --transform-for-static-hosting \
-            --hosting-base-path swift-event-sourcing-cqrs \
-            --output-path ./docs
+            --hosting-base-path swift-event-sourcing-cqrs/EventProducer \
+            --output-path ./docs/EventProducer
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
