@@ -3,11 +3,6 @@ import Foundation
 /// イベント配信プロトコル
 ///
 /// Event Sourcingにおけるイベントの保存・配信を行うサービスプロトコル
-///
-/// ```swift
-/// let producer: some EventProducible
-/// producer.produce(event)
-/// ```
 public protocol EventProducible: Sendable {
     /// イベントの配信する
     ///
