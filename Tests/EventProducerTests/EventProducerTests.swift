@@ -1,7 +1,7 @@
 import XCTest
-@testable import event_sourcing_cqrs
+@testable import EventProducer
 
-final class event_sourcing_cqrsTests: XCTestCase {
+final class EventProducerTests: XCTestCase {
     func testExample() throws {
         // XCTest Documentation
         // https://developer.apple.com/documentation/xctest

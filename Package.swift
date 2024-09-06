@@ -8,16 +8,16 @@ let package = Package(
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
-            name: "event-sourcing-cqrs",
-            targets: ["event-sourcing-cqrs"]),
+            name: "EventProducer",
+            targets: ["EventProducer"]),
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "event-sourcing-cqrs"),
+            name: "EventProducer"),
         .testTarget(
-            name: "event-sourcing-cqrsTests",
-            dependencies: ["event-sourcing-cqrs"]),
+            name: "EventProducerTests",
+            dependencies: ["EventProducer"]),
     ]
 )
