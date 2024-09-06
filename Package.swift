@@ -8,18 +8,16 @@ let package = Package(
     name: "event-sourcing-cqrs",
     platforms: [.macOS(.v14)],
     products: [
-        // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
             name: "EventProducer",
-            targets: ["EventProducer"]),
+            targets: ["EventProducer"]
+        ),
     ],
     dependencies: [
         .package(url: "https://github.com/apple/swift-testing.git", from: "0.10.0"),
         .package(url: "https://github.com/realm/SwiftLint.git", branch: "main"),
     ],
     targets: [
-        // Targets are the basic building blocks of a package, defining a module or a test suite.
-        // Targets can depend on other targets in this package and products from dependencies.
         .target(
             name: "EventProducer",
             plugins: swiftLintPlugins
